@@ -32,10 +32,9 @@ from(personajes)
 	.pipe(filter((p) => p.tipo === 'heroe'))
 	.subscribe(console.log);
 
-const keyup$ = fromEvent<KeyboardEvent>(document, 'keyup')
-.map( ev => ev.code),
-filter (key => jey === "Enter")
-
-
+const keyup$ = fromEvent<KeyboardEvent>(document, 'keyup').pipe(
+	map((ev) => ev.code),
+	filter((key) => key === 'Enter')
+);
 
 keyup$.subscribe(console.log);
