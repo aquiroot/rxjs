@@ -1,22 +1,22 @@
-import { from } from 'rxjs';
-
+import { interval } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 /**
- * Ejercicio:
- * Sume todos los números del arreglo usando un reduce.
- * Debe de filtrar para que sólo números sean procesados
- * La salida debe de ser 32
+ * Ejercicio: Realizar que los dos observables finales,
+ * emitan exactamente el mismo valor
  *
- * Tip:
- * isNan() es una función de JavaScript para determinar si es número
- * Usar filter<any>(...) para no tener problemas de tipado.
+ * Tip: Hot Observable? subjects?
  */
 
 (() => {
-	const datos = [1, 2, 'foo', 3, 5, 6, 'bar', 7, 8];
+	// == NO TOCAR este bloque ====================
+	const reloj$ = interval(1000).pipe(
+		take(5),
+		map((val) => Math.round(Math.random() * 100))
+	);
+	// No tocar la creación del observable
+	// ============================================
 
-	from(datos)
-		.pipe
-		// Trabajar aquí
-		()
-		.subscribe(console.log); // La salida debe de ser 32
+	// Estos dos observables deben de emitir exactamente los mismos valores
+	reloj$.subscribe((val) => console.log('obs1', val));
+	reloj$.subscribe((val) => console.log('obs2', val));
 })();
