@@ -1,22 +1,29 @@
 import { interval } from 'rxjs';
-import { take, map } from 'rxjs/operators';
+
 /**
- * Ejercicio: Realizar que los dos observables finales,
- * emitan exactamente el mismo valor
- *
- * Tip: Hot Observable? subjects?
+ * Ejercicio: Realizar una cuenta regresiva
+ * empezando de 7
  */
 
-(() => {
-	// == NO TOCAR este bloque ====================
-	const reloj$ = interval(1000).pipe(
-		take(5),
-		map((val) => Math.round(Math.random() * 100))
-	);
-	// No tocar la creación del observable
-	// ============================================
+// Salida esperada ===
+// 7
+// 6
+// 5
+// 4
+// 3
+// 2
+// 1
+// 0
 
-	// Estos dos observables deben de emitir exactamente los mismos valores
-	reloj$.subscribe((val) => console.log('obs1', val));
-	reloj$.subscribe((val) => console.log('obs2', val));
+(() => {
+	const inicio = 7;
+	const countdown$ = interval(700)
+		.pipe
+		// Usar los operadores necesarios
+		// para realizar la cuenta regresiva
+		();
+
+	// No tocar esta línea ==================
+	countdown$.subscribe(console.log); // =
+	// ======================================
 })();
